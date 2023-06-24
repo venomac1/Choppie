@@ -1,0 +1,23 @@
+//@version=5
+indicator(title = "Chop Zone", format=format.price, precision=0, timeframe="", timeframe_gaps=true)
+colorTurquoise = #26C6DA
+colorDarkGreen = #43A047
+colorPaleGreen = #A5D6A7
+colorLime = #009688
+colorDarkRed = #D50000
+colorRed = #E91E63
+colorOrange = #FF6D00
+colorLightOrange = #FFB74D
+colorYellow = #FDD835
+source = close
+avg = hlc3
+pi = math.atan(1) * 4
+periods = 30
+highestHigh = ta.highest(periods)
+lowestLow = ta.lowest(periods)
+span = 25 / (highestHigh - lowestLow) * lowestLow
+ema34 = ta.ema(source, 34)
+x1_ema34 = 0
+x2_ema34 = 1
+y1_ema34 = 0
+y2_ema34 = (ema34[1] - ema34) / avg * span
